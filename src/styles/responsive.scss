@@ -1,0 +1,64 @@
+@media screen and (min-width: 580px) {
+    h2.list-title {
+        font-size: 2rem;
+    }
+    main {
+        padding: 20px;
+    }
+
+    list-restaurant {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    restaurant-item {
+        min-height: 320px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    main {
+        max-width: 1200px;
+    }
+
+    list-restaurant {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    nav-bar ul.list-nav {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: -35px;
+        transform: translate(0, 0);
+        height: 0;
+        width: auto;
+        z-index: 1;
+        padding-top: 0;
+    }
+
+    nav-bar ul.list-nav li a {
+        padding: 15px 5px;
+    }
+
+    button#btn-menu {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .img-hero {
+        background: url(../public/images/heros/hero-img-larger.jpg);
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center; 
+    }
+
+    h2.list-title {
+        font-size: 2rem;
+    }
+
+    nav-bar ul.list-nav li {
+        font-size: 1.1rem;
+        margin-top: 4px;
+    }
+}
