@@ -5,7 +5,7 @@ class AppFooter extends HTMLElement {
 
   render() {
     this.innerHTML = `
-        <p class="footer-flex">Made with <i class='fa fa-code'></i> by Muh. Dadang Hawari </p>
+        <p class="footer-flex">Made with < / > by Muh. Dadang Hawari </p>
       `;
   }
 }
