@@ -6,9 +6,6 @@ const { DATABASE_NAME, DATABASE_VERSION, OBJECT_STORE_NAME } = CONFIG;
 const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
   upgrade(database) {
     database.createObjectStore(OBJECT_STORE_NAME, { keyPath: 'id' });
-    if (process.env.NODE_ENV === 'test') {
-      global.structuredClone = jest.fn((val) => JSON.parse(JSON.stringify(val)));
-    }
   },
 });
 
