@@ -40,7 +40,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
-      
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -78,9 +77,12 @@ module.exports = {
         imageminMozjpeg({
           quality: 50,
           progressive: true,
-        })
-      ]
+        }),
+      ],
     }),
-    new BundleAnalyzerPlugin(),
-  ],
+    process.env.NODE_ENV === 'production' && new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+    }),
+  ].filter(Boolean),
 };
