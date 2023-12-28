@@ -1,4 +1,3 @@
-import PostReview from "../utils/post-review";
 class FormReview extends HTMLElement {
   connectedCallback() {
     this.render();

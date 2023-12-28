@@ -1,9 +1,9 @@
+/* eslint-disable indent */
 const assert = require('assert');
 
 Feature('Post a Review');
 
 Scenario('Post Review', async ({ I }) => {
-
     I.amOnPage('/');
     I.seeElement('list-restaurant');
     I.seeElement('restaurant-item');
@@ -24,8 +24,8 @@ Scenario('Post Review', async ({ I }) => {
     I.click('Send');
     I.wait(1);
 
-    I.see(testName)
-    I.see(testMessage)
+    I.see(testName);
+    I.see(testMessage);
 
     const currentSumReviewer = await I.grabNumberOfVisibleElements('comment-reviewer');
 
@@ -45,7 +45,7 @@ Scenario('Post Review Without Fill the Form', async ({ I }) => {
 
     I.click(firstRestaurantDetail);
     I.seeElement(locate('form-review').find('form'));
-    
+
     const sumReviewerBefore = await I.grabNumberOfVisibleElements('comment-reviewer');
 
     I.click('Send');
@@ -53,4 +53,4 @@ Scenario('Post Review Without Fill the Form', async ({ I }) => {
     const currentSumReviewer = await I.grabNumberOfVisibleElements('comment-reviewer');
     // Make sure, the post without fill the form is not posted
     assert(currentSumReviewer === sumReviewerBefore);
-})
+});

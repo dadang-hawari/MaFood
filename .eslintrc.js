@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es2021: true,
     jest: true,
-    codeceptjs: true,
   },
   extends: 'airbnb-base',
   overrides: [
@@ -22,6 +21,7 @@ module.exports = {
     'no-prototype-builtins': 0,
     'consistent-return': 0,
     'import/prefer-default-export': 0,
-
+    'no-param-reassign': 0,
+    'no-undef': 0,
   },
 };

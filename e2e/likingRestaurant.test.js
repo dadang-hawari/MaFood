@@ -31,9 +31,7 @@ Scenario('Liking a restaurant', async ({ I }) => {
   I.amOnPage('/#/favorite');
   I.seeElement(locate('restaurant-item'));
   const likedRestaurantName = await I.grabTextFrom(locate('restaurant-item').find('h2.restoran-title'));
-  
+
   // Make sure liked restaurant same as the first restaurant
   assert.strictEqual(firstRestaurantTarget, likedRestaurantName, 'Liked restaurant name should be the same as the first restaurant name');
 });
-
-
