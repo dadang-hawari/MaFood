@@ -1,4 +1,4 @@
-import { injectSpeedInsights } from '@vercel/speed-insights/*';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 // Import dependencies
 import 'regenerator-runtime';
 import App from './views/app';
