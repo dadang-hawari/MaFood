@@ -1,4 +1,3 @@
-import { injectSpeedInsights } from '@vercel/speed-insights';
 // Import dependencies
 import 'regenerator-runtime';
 import App from './views/app';
@@ -24,8 +23,6 @@ const app = new App({
   content: document.querySelector('main'),
   jumbotron: document.querySelector('.jumbotron'),
 });
-
-injectSpeedInsights();
 
 // Handle hashchange event
 window.addEventListener('hashchange', () => {
