@@ -21,6 +21,7 @@ module.exports = {
     'no-prototype-builtins': 0,
     'consistent-return': 0,
     'import/prefer-default-export': 0,
-
+    'no-param-reassign': 0,
+    'no-undef': 0,
   },
 };
