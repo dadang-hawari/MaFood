@@ -26,7 +26,7 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const detail = await RestaurantSource.detailRestaurant(url.id);
 
-    const loadingSpinner = document.querySelector('loading-spinner');
+    // const loadingSpinner = document.querySelector('loading-spinner');
     const dataNotFound = document.querySelector('.data-not-found');
     const detailContainer = document.querySelector('.detail-container');
 
@@ -34,7 +34,7 @@ const Detail = {
       dataNotFound.classList.remove('hidden');
     } else if (detail) {
       dataNotFound.classList.add('hidden');
-      loadingSpinner.classList.add('hidden');
+      // loadingSpinner.classList.add('hidden');
 
       const reviewContainer = document.querySelector('app-review');
       detailContainer.innerHTML = createDetailRestaurantTemplate(detail);
