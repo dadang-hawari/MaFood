@@ -7,7 +7,7 @@ class NavBar extends HTMLElement {
     this.innerHTML = `
     <a class="skip-link" id="toContent" href='#main'>To Content</a>
     <div class="logo">
-      <h2><a href="#/restaurant">MaFood.</a></h2>
+      <h1><a href="#/restaurant">MaFood.</a></h1>
     </div>
     <button id="btn-menu" aria-label="Tombol Menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
