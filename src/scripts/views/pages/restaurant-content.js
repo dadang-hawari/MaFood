@@ -12,7 +12,7 @@ const Restaurant = {
       <loading-spinner></loading-spinner>
       <list-restaurant></list-restaurant>
       <not-found class="data-not-found hidden"></not-found>
-      <button id="load-more" class="hidden" style="color: white; font-weight: bold; font-size:14px; background-color:black; cursor: pointer; border-radius: 10px; padding-inline:10px; padding-block:8px;">Load More</button>
+      <button id="sendReview" class="hidden">Load More</button>
     `;
   },
 
@@ -20,7 +20,7 @@ const Restaurant = {
     const loadingSpinner = document.querySelector('loading-spinner');
     const dataNotFound = document.querySelector('.data-not-found');
     const restaurantsList = document.querySelector('list-restaurant');
-    const loadMoreButton = document.querySelector('#load-more');
+    const loadMoreButton = document.querySelector('#sendReview');
     let allRestaurants = [];
     let currentDisplayCount = 0;
     const displayBatchSize = 3;
