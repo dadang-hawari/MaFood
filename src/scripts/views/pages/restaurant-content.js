@@ -12,7 +12,7 @@ const Restaurant = {
       <loading-spinner></loading-spinner>
       <list-restaurant></list-restaurant>
       <not-found class="data-not-found hidden"></not-found>
-      <button id="load-more" class="hidden" style="color: white; font-weight: bold; font-size:14px; border-radius: 10px; padding-inline:10px; padding-block:8px;">Load More</button>
+      <button id="load-more" class="hidden" style="color: white; font-weight: bold; font-size:14px; background-color:black; cursor: pointer; border-radius: 10px; padding-inline:10px; padding-block:8px;">Load More</button>
     `;
   },
 
@@ -23,7 +23,7 @@ const Restaurant = {
     const loadMoreButton = document.querySelector('#load-more');
     let allRestaurants = [];
     let currentDisplayCount = 0;
-    const displayBatchSize = 5;
+    const displayBatchSize = 3;
 
     const displayRestaurants = () => {
       const restaurantsToDisplay = allRestaurants.slice(currentDisplayCount, currentDisplayCount + displayBatchSize);
