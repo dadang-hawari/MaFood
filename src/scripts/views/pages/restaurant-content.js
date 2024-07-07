@@ -53,7 +53,6 @@ const Restaurant = {
           displayRestaurants();
         }
       } catch (error) {
-        console.error('Error fetching restaurants:', error);
         loadingSpinner.classList.add('hidden');
         dataNotFound.classList.remove('hidden');
         loadMoreButton.classList.add('hidden');
