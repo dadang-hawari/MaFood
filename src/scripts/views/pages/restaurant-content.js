@@ -1,5 +1,4 @@
 import RestaurantSource from '../../data/restaurant-source';
-// Import Components
 import '../../components/restaurant-item';
 import '../../components/list-restaurant';
 import '../../components/restaurant-heading';
@@ -10,45 +9,61 @@ const Restaurant = {
   async render() {
     return `
       <restaurant-heading>Explore Restaurants</restaurant-heading>
-      <loading-spinner class="spinner-overlay"></loading-spinner>
+      <loading-spinner></loading-spinner>
       <list-restaurant></list-restaurant>
-      <not-found class="hidden"></not-found>
+      <not-found class="data-not-found hidden"></not-found>
+      <button id="load-more" class="hidden">Load More</button>
     `;
   },
 
   async afterRender() {
-    const loadingSpinner = document.querySelector('.spinner-overlay');
-    let loading = true;
+    const loadingSpinner = document.querySelector('loading-spinner');
     const dataNotFound = document.querySelector('.data-not-found');
     const restaurantsList = document.querySelector('list-restaurant');
+    const loadMoreButton = document.querySelector('#load-more');
+    let allRestaurants = [];
+    let currentDisplayCount = 0;
+    const displayBatchSize = 10;
 
-    // Show loading spinner
-    loadingSpinner.classList.remove('hidden');
+    const displayRestaurants = () => {
+      const restaurantsToDisplay = allRestaurants.slice(currentDisplayCount, currentDisplayCount + displayBatchSize);
+      restaurantsToDisplay.forEach((restaurant) => {
+        const restaurantItem = document.createElement('restaurant-item');
+        restaurantItem.render(restaurant);
+        restaurantsList.appendChild(restaurantItem);
+      });
+      currentDisplayCount += displayBatchSize;
 
-    try {
-      const restaurants = await RestaurantSource.getRestaurant();
-      loading = false;
-
-      // Hide loading spinner
-      loadingSpinner.classList.add('hidden');
-
-      if (restaurants.length === 0) {
-        dataNotFound.classList.remove('hidden');
+      if (currentDisplayCount >= allRestaurants.length) {
+        loadMoreButton.classList.add('hidden');
       } else {
-        dataNotFound.classList.add('hidden');
-
-        restaurants.forEach((restaurant) => {
-          const restaurantItem = document.createElement('restaurant-item');
-          restaurantItem.render(restaurant);
-          restaurantsList.appendChild(restaurantItem);
-        });
+        loadMoreButton.classList.remove('hidden');
       }
-    } catch (error) {
-      console.error('Failed to fetch restaurants:', error);
-      loading = false;
-      loadingSpinner.classList.add('hidden');
-      dataNotFound.classList.remove('hidden');
-    }
+    };
+
+    const loadRestaurants = async () => {
+      loadingSpinner.classList.remove('hidden');
+      try {
+        allRestaurants = await RestaurantSource.getAllRestaurants();
+        loadingSpinner.classList.add('hidden');
+        if (allRestaurants.length === 0) {
+          dataNotFound.classList.remove('hidden');
+        } else {
+          dataNotFound.classList.add('hidden');
+          displayRestaurants();
+        }
+      } catch (error) {
+        console.error('Error fetching restaurants:', error);
+        loadingSpinner.classList.add('hidden');
+        dataNotFound.classList.remove('hidden');
+        loadMoreButton.classList.add('hidden');
+      }
+    };
+
+    loadMoreButton.addEventListener('click', displayRestaurants);
+
+    // Load initial restaurants
+    loadRestaurants();
   },
 };
 
