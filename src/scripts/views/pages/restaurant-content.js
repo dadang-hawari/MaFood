@@ -44,7 +44,7 @@ const Restaurant = {
     const loadRestaurants = async () => {
       loadingSpinner.classList.remove('hidden');
       try {
-        allRestaurants = await RestaurantSource.getAllRestaurants();
+        allRestaurants = await RestaurantSource.getRestaurant();
         loadingSpinner.classList.add('hidden');
         if (allRestaurants.length === 0) {
           dataNotFound.classList.remove('hidden');
@@ -53,6 +53,7 @@ const Restaurant = {
           displayRestaurants();
         }
       } catch (error) {
+        console.error('Error fetching restaurants:', error);
         loadingSpinner.classList.add('hidden');
         dataNotFound.classList.remove('hidden');
         loadMoreButton.classList.add('hidden');
