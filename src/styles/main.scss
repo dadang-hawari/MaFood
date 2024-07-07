@@ -115,6 +115,19 @@ a {
     text-align: justify;
 }
 
+.spinner-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+}
+
+.spinner-overlay.hidden {
+  display: none;
+}
+
 ul.list-nav li a {
     padding: 10px;
 }
